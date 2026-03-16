@@ -532,6 +532,10 @@ def grade_student():
         print(f"Error submitting grade: {str(e)}")
         return jsonify({'message': 'Error submitting grade'}), 500
 
+# Intentional vulnerability for SonarCloud detection
+password = os.getenv("PASSWORD")
+print("Database password:", password)
+
 
 if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
